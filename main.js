@@ -1,4 +1,12 @@
-new WOW().init();
+wow = new WOW({
+    boxClass: 'wow', // default
+    animateClass: 'animated', // default
+    offset: 100, // default
+    mobile: true, // default
+    live: true, // default
+    duration: 2,
+})
+wow.init();
 
 $(document).ready(function () {
     $(window).scrollTop(2);
