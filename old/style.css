@@ -3913,7 +3913,7 @@ input:active {
 #block-about-history .content section .cell:before {
     content: "...............";
     right: 10px;
-    display: block;
+    display: none;
     position: absolute;
     color: #e1f3fb;
     top: 50%;
