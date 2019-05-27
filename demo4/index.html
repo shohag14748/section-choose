@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: "Source Sans Pro";
+        }
+
+        /* Section Services */
+        body {
+            /*            background-image: url(http://cms.devoffice.com/coding-demo/jeremyLuis/millenium/pattern-bg.png);*/
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .services {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .services>* {
+            flex-grow: 1;
+        }
+
+        .circle--rotate {
+            border-radius: 50%;
+            border: 1px #000000 solid;
+            width: 70%;
+            height: 70%;
+            margin: 0 auto 0;
+            position: relative;
+            transform: rotate(0deg);
+            z-index: 0;
+            padding: 0px;
+        }
+
+        .circle--rotate>li {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            border-radius: 50%;
+            z-index: 10;
+            visibility: hidden;
+        }
+
+        .circle--rotate>li .icon {
+            visibility: visible;
+            cursor: pointer;
+            text-align: center;
+            overflow: hidden;
+            font-size: 20px;
+            color: #ffffff;
+            border-radius: 50%;
+            background-color: #000000;
+            height: 20%;
+            width: 20%;
+            margin: -10% auto;
+            transition: all 500ms ease;
+            box-shadow: -10px 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .circle--rotate>li .icon img {
+            width: 90%;
+            padding: 5%
+        }
+
+        .circle--rotate>li i {
+            color: #ffffff;
+            font-size: 24px;
+            margin: auto;
+            cursor: pointer;
+            width: 100%;
+            height: 100%;
+            display: table;
+        }
+
+        .circle--rotate>li i::before {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .circle--rotate>li img {
+            margin: auto;
+        }
+
+        .circle--slider {
+            position: relative;
+        }
+
+        .circle--slider .rotate--circle {
+            margin: 0 auto;
+        }
+
+        .circle--slider .circle--rotate>li div {
+            position: relative;
+            overflow: visible;
+            background-color: #1F2845;
+        }
+
+        .circle--slider .circle--rotate>li div span {
+            transform: rotate(0deg);
+            transition: all 2s;
+            opacity: 0;
+        }
+
+        .circle--slider .circle--rotate>li div span {
+            transform: rotate(0deg);
+            transition: all 2s;
+            opacity: 0;
+        }
+
+        .circle--slider .circle--rotate>li.active div {
+            font-size: 20px;
+            background-color: #654BE4;
+            transition: all 1s;
+        }
+
+        .circle--slider .circle--rotate>li.active div span {
+            width: 100%;
+            height: 100%;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: rotate(-45deg);
+            z-index: -1;
+            opacity: 1;
+        }
+
+        /*
+        .circle--slider .circle--rotate>li.active div span:before {
+            position: absolute;
+            height: 1px;
+            top: -50%;
+            right: 140%;
+            bottom: 0;
+            margin: auto;
+            content: "";
+            width: 30%;
+            height: 30%;
+            filter: blur(3px);
+            opacity: .7;
+            border: 6px solid #F48E2A;
+            z-index: -1;
+        }
+*/
+
+        /*
+        .circle--slider .circle--rotate>li.active div span:after {
+            position: absolute;
+            height: 1px;
+            top: 100%;
+            left: 130%;
+            bottom: 0;
+            margin: auto;
+            content: "";
+            width: 40%;
+            height: 40%;
+            border-radius: 50%;
+            opacity: .7;
+            border: 8px solid #FE9290;
+            z-index: 5;
+        }
+*/
+
+        .circle--slider .count2 li:nth-child(2) {
+            transform: rotate(180deg);
+        }
+
+        .circle--slider .count3 li:nth-child(2) {
+            transform: rotate(120deg);
+        }
+
+        .circle--slider .count3 li:nth-child(3) {
+            transform: rotate(240deg);
+        }
+
+        .circle--slider .count4 li:nth-child(2) {
+            transform: rotate(90deg);
+        }
+
+        .circle--slider .count4 li:nth-child(3) {
+            transform: rotate(180deg);
+        }
+
+        .circle--slider .count4 li:nth-child(4) {
+            transform: rotate(270deg);
+        }
+
+        .circle--slider .count5 li:nth-child(2) {
+            transform: rotate(72deg);
+        }
+
+        .circle--slider .count5 li:nth-child(3) {
+            transform: rotate(144deg);
+        }
+
+        .circle--slider .count5 li:nth-child(4) {
+            transform: rotate(216deg);
+        }
+
+        .circle--slider .count5 li:nth-child(5) {
+            transform: rotate(-72deg);
+        }
+
+        .circle--slider .count6 li:nth-child(2) {
+            transform: rotate(60deg);
+        }
+
+        .circle--slider .count6 li:nth-child(3) {
+            transform: rotate(120deg);
+        }
+
+        .circle--slider .count6 li:nth-child(4) {
+            transform: rotate(180deg);
+        }
+
+        .circle--slider .count6 li:nth-child(5) {
+            transform: rotate(240deg);
+        }
+
+        .circle--slider .count6 li:nth-child(6) {
+            transform: rotate(-60deg);
+        }
+
+        .circle--slider .count7 li:nth-child(2) {
+            transform: rotate(51.5deg);
+        }
+
+        .circle--slider .count7 li:nth-child(3) {
+            transform: rotate(103deg);
+        }
+
+        .circle--slider .count7 li:nth-child(4) {
+            transform: rotate(154.5deg);
+        }
+
+        .circle--slider .count7 li:nth-child(5) {
+            transform: rotate(206deg);
+        }
+
+        .circle--slider .count7 li:nth-child(6) {
+            transform: rotate(-103deg);
+        }
+
+        .circle--slider .count7 li:nth-child(7) {
+            transform: rotate(-51.5deg);
+        }
+
+        .circle--slider .count8 li:nth-child(2) {
+            transform: rotate(45deg);
+        }
+
+        .circle--slider .count8 li:nth-child(3) {
+            transform: rotate(90deg);
+        }
+
+        .circle--slider .count8 li:nth-child(4) {
+            transform: rotate(135deg);
+        }
+
+        .circle--slider .count8 li:nth-child(5) {
+            transform: rotate(180deg);
+        }
+
+        .circle--slider .count8 li:nth-child(6) {
+            transform: rotate(-135deg);
+        }
+
+        .circle--slider .count8 li:nth-child(7) {
+            transform: rotate(-90deg);
+        }
+
+        .circle--slider .count8 li:nth-child(8) {
+            transform: rotate(-45deg);
+        }
+
+        .circle--slider .count9 li:nth-child(2) {
+            transform: rotate(40deg);
+        }
+
+        .circle--slider .count9 li:nth-child(3) {
+            transform: rotate(80deg);
+        }
+
+        .circle--slider .count9 li:nth-child(4) {
+            transform: rotate(120deg);
+        }
+
+        .circle--slider .count9 li:nth-child(5) {
+            transform: rotate(160deg);
+        }
+
+        .circle--slider .count9 li:nth-child(6) {
+            transform: rotate(-160deg);
+        }
+
+        .circle--slider .count9 li:nth-child(7) {
+            transform: rotate(-120deg);
+        }
+
+        .circle--slider .count9 li:nth-child(8) {
+            transform: rotate(-80deg);
+        }
+
+        .circle--slider .count9 li:nth-child(9) {
+            transform: rotate(-40deg);
+        }
+
+        .circle--slider .count10 li:nth-child(2) {
+            transform: rotate(36deg);
+        }
+
+        .circle--slider .count10 li:nth-child(3) {
+            transform: rotate(72deg);
+        }
+
+        .circle--slider .count10 li:nth-child(4) {
+            transform: rotate(108deg);
+        }
+
+        .circle--slider .count10 li:nth-child(5) {
+            transform: rotate(144deg);
+        }
+
+        .circle--slider .count10 li:nth-child(6) {
+            transform: rotate(-180deg);
+        }
+
+        .circle--slider .count10 li:nth-child(7) {
+            transform: rotate(-144deg);
+        }
+
+        .circle--slider .count10 li:nth-child(8) {
+            transform: rotate(-108deg);
+        }
+
+        .circle--slider .count10 li:nth-child(9) {
+            transform: rotate(-72deg);
+        }
+
+        .circle--slider .count10 li:nth-child(10) {
+            transform: rotate(-36deg);
+        }
+
+        .circle--slider .animate-wrapper {
+            width: 25%;
+            height: 25%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            border-radius: 50%;
+        }
+
+        .circle--slider .animate-title {
+            color: #fff;
+        }
+
+        .circle--slider .animate-img {
+            width: 15%;
+            height: 15%;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .circle--slider .animate-img .animate-img__in {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            border-radius: 50%;
+            background-repeat: no-repeat;
+            z-index: 3;
+            transform: rotate3d(0, 0, 0, 0deg) scale(0.85);
+            transition: .55s ease-in-out;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            background-size: cover;
+            box-shadow: -20px 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .circle--slider .animate-more {
+            opacity: 0;
+            visibility: hidden;
+            transition: all .5s .4s;
+            min-width: 131px;
+            overflow: hidden;
+            text-align: center;
+            z-index: 30;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            padding: 15px;
+            height: 62px;
+            transform: scale(0.8);
+        }
+
+        .circle--slider .animate.active .animate-more {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+            display: none;
+        }
+
+        .circle--slider .animate.active .animate-img .animate-img__in {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .circle--slider .prev,
+        .circle--slider .next {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            display: block;
+            height: 62px;
+            width: 87px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .circle--slider .prev span,
+        .circle--slider .next span {
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            font-weight: 700;
+        }
+
+        .circle--slider .prev {
+            left: 250px;
+        }
+
+        .circle--slider .next {
+            right: 250px;
+        }
+
+        .col1 {
+            width: 50%;
+            padding: 3%;
+        }
+
+        .col2 {
+            width: 50%;
+            padding: 3%;
+            box-sizing: border-box;
+        }
+
+        h3 {
+            font-size: 25px;
+            color: #51a0a1;
+            margin: 0px;
+        }
+
+        .item ul {
+            list-style: none;
+            animation: change2 1.5s cubic-bezier(0.77, 0, .175, 1);
+        }
+
+        ul li {
+            padding: 5px 0;
+            color: #999;
+            font-size: 15px;
+        }
+
+        ul li:before {
+            content: "\2714";
+            display: inline-block;
+            font-size: 18px;
+            position: absolute;
+            margin-left: -27px;
+            margin-top: -1px;
+            color: tomato;
+        }
+
+        .item {
+            display: none;
+        }
+
+        .item.active {
+            display: block;
+        }
+
+        .item.active .heading {
+            position: relative;
+            overflow: hidden;
+            padding: 10px 0;
+        }
+
+        .item.active .heading h3 {
+            animation: change 1s cubic-bezier(0.77, 0, .175, 1);
+            opacity: 1;
+            position: relative;
+            height: 100%;
+        }
+
+        @keyframes change {
+            0% {
+                top: 200px;
+            }
+
+            100% {
+                top: 0;
+            }
+        }
+
+        @keyframes change2 {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="services">
+        <div class="col1">
+
+            <div class="circle--slider">
+                <div class="rotate--circle">
+                    <ul class="circle--rotate " id="circle--rotate" style="height: 154.797px; transform: rotate(0deg);">
+                        <li class="block">
+                            <div class="icon"><img src="../personal-attention-vamospanish-85x85.png" alt=""><span> </span></div>
+                        </li>
+                        <li class="block">
+                            <div class="icon"><img src="../home-away-from-home-vamospanish-85x85.png" alt=""><span> </span></div>
+                        </li>
+                        <li class="block">
+                            <div class="icon"><img src="../social-atmosphere-vamospanish-85x85.png" alt=""><span> </span></div>
+                        </li>
+                        <li class="block">
+                            <div class="icon"><img src="../great-location-vamospanish-85x85.png" alt=""><span> </span></div>
+                        </li>
+                        <li class="block">
+                            <div class="icon"><img src="../reputable-spanish-school-vamospanish-85x85.png" alt=""><span> </span></div>
+                        </li>
+                    </ul>
+                    <div class="animate-wrapper" style="height: 90px;">
+                        <div class="animate active">
+                            <div class="animate-img">
+                                <div class="animate-img__in" data-image="../personal-attention-vamospanish-85x85.png" style="background-image: url('../personal-attention-vamospanish-85x85.png');">
+                                    <div class="animate-more">
+                                        <div class="animate-title">
+                                            <h4>Web Development</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="animate">
+                            <div class="animate-img">
+                                <div class="animate-img__in" data-image="../home-away-from-home-vamospanish-85x85.png" style="background-image: url('../home-away-from-home-vamospanish-85x85.png');">
+                                    <div class="animate-more">
+                                        <div class="animate-title">
+                                            <h4>Website desing</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="animate">
+                            <div class="animate-img">
+                                <div class="animate-img__in" data-image="../social-atmosphere-vamospanish-85x85.png" style="background-image: url('../social-atmosphere-vamospanish-85x85.png');">
+                                    <div class="animate-more">
+                                        <div class="animate-title">
+                                            <h4>PURE &amp; SIMPLE</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="animate">
+                            <div class="animate-img">
+                                <div class="animate-img__in" data-image="../great-location-vamospanish-85x85.png" style="background-image: url('../great-location-vamospanish-85x85.png');">
+                                    <div class="animate-more">
+                                        <div class="animate-title">
+                                            <h4>CROSS-BROWSER SUPPORT</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="animate">
+                            <div class="animate-img">
+                                <div class="animate-img__in" data-image="../reputable-spanish-school-vamospanish-85x85.png" style="background-image: url('../reputable-spanish-school-vamospanish-85x85.png');">
+                                    <div class="animate-more">
+                                        <div class="animate-title">
+                                            <h4>HTML5 AND CSS3</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!--
+                <div class="prev"><span>PREV</span></div>
+                <div class="next"><span>NEXT</span></div>
+-->
+                </div>
+            </div>
+        </div>
+        <div class="col2">
+            <div class=" item active">
+                <div class="heading">
+                    <h3>Personalized Spanish learning experience with our professional Academic Team</h3>
+                </div>
+                <ul class="text">
+                    <li>We have a dedicated Academic Director oversees and plans every single class to make sure each Spanish lesson is right for your level and progresses in a continuous manner.</li>
+                    <li>We create specially designed learning materials for each level and every class.</li>
+                    <li>The best way to learn a language is full immersion. All classes are taught entirely in Spanish.</li>
+                    <li>Group class size is strictly kept small at no more than 6 students per class.</li>
+                </ul>
+            </div>
+            <div class=" item">
+                <div class="heading">
+                    <h3>Your Home Away from Home</h3>
+                </div>
+                <ul class="text">
+                    <li>Classes are held inside a beautiful French-style building on a tree lined street.</li>
+                    <li>We provide weekly updates on what is happening in and around Buenos Aires, to make sure you are well-informed and get the most out of your time in this wonderful city.</li>
+                    <li>Our knowledgeable staff are always on hand to help you and to answer your questions.</li>
+                    <li>We serve as a great base and point of contact when you are in need while travelling around in Argentina.</li>
+                </ul>
+            </div>
+            <div class=" item">
+                <div class="heading">
+                    <h3>International and Social Atmosphere</h3>
+                </div>
+                <ul class="text">
+                    <li>Every week we receive a diverse mix of students from all walks of life from all over the globe.</li>
+                    <li>A welcome orientation on your first day of class while you meet your new schoolmates.</li>
+                    <li>Our after-class workshops and social events make it easy to meet new friends.</li>
+                </ul>
+            </div>
+            <div class=" item">
+                <div class="heading">
+                    <h3>Well-located in the dynamic Palermo neighborhood</h3>
+                </div>
+                <ul class="text">
+                    <li>Just a few minutes walk to Subway Line D</li>
+                    <li>More than a dozen bus routes</li>
+                    <li>Trendy shopping mall and boutiques</li>
+                    <li>Many cafés, restaurants, ice-cream shops, bakeries and lush green parks nearby</li>
+                </ul>
+            </div>
+            <div class=" item">
+                <div class="heading">
+                    <h3>Best Value in the City</h3>
+                </div>
+                <ul class="text">
+                    <li>No registration fee or extra material charges for your Spanish classes</li>
+                    <li>We are located in the most popular neighborhood, Palermo</li>
+                    <li>Fair prices include Free Spanish language and cultural workshops</li>
+                    <li>Complimentary coffee/tea throughout the day to keep you motivated to learn!</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <script src="../jquery-3.4.1.min.js"></script>
+
+    <script>
+        (function(e) {
+            e.fn.circle = function(t) {
+                var n = e.extend({
+                    speed: "5000"
+                }, t);
+                return this.each(function() {
+                    function t() {
+                        var e = i.find("li.block.active").index();
+                        c.removeClass("active"), c.eq(e).addClass("active")
+                    }
+
+                    function o() {
+                        var n;
+                        i.addClass("disable-hover"), i.stop(!0, !0).animate({
+                            rotatedeg: p.deg += p.step
+                        }, {
+                            duration: 400,
+                            step: function(t) {
+                                t >= 360 ? t -= 360 : t <= -360 && (t += 360), e(this).css("transform", "rotate(" + t + "deg)"), e(this).css("-webkit-transform", "rotate(" + t + "deg)")
+                            },
+                            complete: function() {
+                                p.active = i.find("li.active").removeClass("active"), "right" == p.direction && p.step == d && (p.active.prev() && p.active.prev().length ? (n = p.active.prev().index(), p.active.prev().addClass("active")) : (p.active.siblings(":last-child").addClass("active"), n = 9)), "left" == p.direction && p.step == u && (p.active.next() && p.active.next().length ? (n = p.active.next().index(), p.active.next().addClass("active")) : (p.active.siblings(":first-child").addClass("active"), n = 0)), i.is(":animated"), i.removeClass("disable-hover"), t()
+                            }
+                        }, "ease")
+                    }
+
+                    function r() {
+                        i.addClass("disable-hover"), i.stop(!0, !0).animate({
+                            rotatedeg: p.deg += p.step
+                        }, {
+                            duration: 400,
+                            step: function(t) {
+                                t >= 360 ? t -= 360 : t <= -360 && (t += 360), e(this).css("transform", "rotate(" + t + "deg)"), e(this).css("-webkit-transform", "rotate(" + t + "deg)")
+                            },
+                            complete: function() {
+                                p.active = i.find("li.active"), i.is(":animated"), i.removeClass("disable-hover")
+                            }
+                        }, "ease")
+                    }
+                    var i = e(this),
+                        s = i.find("li").length,
+                        a = i.find(" > li .icon"),
+                        l = "count" + s,
+                        u = 0,
+                        c = i.next().find(".animate"),
+                        p = {
+                            duration: n.speed,
+                            deg: 0,
+                            step: u,
+                            active: i.find("li.active"),
+                            direction: "left"
+                        };
+                    switch (s) {
+                        case 5:
+                            u = -72;
+                            break;
+                        case 4:
+                            u = -144;
+                            break;
+                        case 3:
+                            u = -216;
+                            break;
+                        case 2:
+                            u = -288;
+                            break;
+                        case 1:
+                            u = -360
+                    }
+                    i.addClass(l);
+                    var d = u - 2 * u;
+                    i.find("> li").first().addClass("active"), i.find("> li").first().find("a").attr("href"), c.eq(0).addClass("active"), e(a).on("click", function() {
+                        var n = e(this).parent().index() - i.find("li.active").index();
+                        i.children("li").removeClass("active"), e(this).parent().addClass("active"), p.step = -n * d, n * d >= 288 && (p.step = -n * d + 360), n * d <= -288 && (p.step = -n * d - 360), r(), p.step = u, p.direction = "left", t()
+                    });
+                    var f = i.parent().find("div.next"),
+                        h = i.parent().find("div.prev");
+                    f.on("click", function() {
+                        i.is(":animated") || (p.direction = "left", p.step = u, o())
+                    }), h.on("click", function() {
+                        i.is(":animated") || (p.direction = "right", p.step = d, o())
+                    })
+                })
+            }
+        }(jQuery));
+
+
+        $(function() {
+            //Background image
+            $('div').each(function() {
+                var url = $(this).attr('data-image');
+                if (url) {
+                    $(this).css('background-image', 'url(' + url + ')');
+                }
+            });
+
+            $('section').each(function() {
+                var url = $(this).attr('data-image');
+                if (url) {
+                    $(this).css('background-image', 'url(' + url + ')');
+                }
+            });
+
+            // Service Auto height circle 
+            function autoHeightCircle() {
+                var circle = $('.circle--rotate'),
+                    circleInner = $('.animate-wrapper'),
+                    circleH = circle.width(),
+                    circleInnerH = circleInner.width();
+                circle.height(circleH);
+                circleInner.height(circleInnerH);
+            }
+
+            $("#circle--rotate").circle();
+            autoHeightCircle();
+            $(window).resize(function() {
+                autoHeightCircle();
+            });
+
+            //            $('.circle--slider li').on('click',function(){
+            ////                var xx =$(".circle--slider li").find().index();
+            ////                alert(xx);
+            //                alert( $(this).index(this) );
+            //            });
+            //            $('.circle--slider li').click(function() {
+            //                alert($(this).index());
+            //            });
+
+            $('.circle--slider li').click(function() {
+                $('.item').eq($(this).index()).addClass('active').siblings().removeClass('active');
+            });
+        });
+    </script>
+</body>
+
+</html>
